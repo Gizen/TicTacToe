@@ -22,6 +22,8 @@ namespace TicTacToe
     {
         int playerTurn = 0;
         int buttonClick = 0;
+        int gameOver = 0;
+        int gameTurns = 0;
         
         public MainWindow()
         {
@@ -37,8 +39,7 @@ namespace TicTacToe
             gameButton7.IsEnabled = false;
             gameButton8.IsEnabled = false;
 
-            string playerX = textBoxPlayerX.Text;
-            string playerO = textBoxPlayerO.Text;
+
 
 
         }
@@ -55,34 +56,95 @@ namespace TicTacToe
             gameButton7.IsEnabled = true;
             gameButton8.IsEnabled = true;
 
+            gameButton.Content = "";
+            gameButton1.Content = "";
+            gameButton2.Content = "";
+            gameButton3.Content = "";
+            gameButton4.Content = "";
+            gameButton5.Content = "";
+            gameButton6.Content = "";
+            gameButton7.Content = "";
+            gameButton8.Content = "";
+            string playerX = textBoxPlayerX.Text;
+            string playerO = textBoxPlayerO.Text;
         }
 
-        private void XO()
+        private void XO(Button gB)
         {
-            if (buttonClick == 0)
+            if (gB.Content == "")
             {
                 if (playerTurn == 0)
                 {
-                    gameButton.Content = "X";
-                    playerTurn += 1;
+                    gB.Content = "X";
+                    playerTurn = 1;
                 }
                 else
                 {
-                    gameButton.Content = "O";
+                    gB.Content = "O";
                     playerTurn -= 1;
-                }
-                buttonClick += 1;
+                }                
+            }
+            gameTurns++;
+        }
+
+        private void GameWon()
+        {
+            if ((gameButton.Content == gameButton1.Content && gameButton1.Content == gameButton2.Content)
+                || (gameButton3.Content == gameButton4.Content && gameButton4.Content == gameButton5.Content)
+                || (gameButton6.Content == gameButton7.Content && gameButton7.Content == gameButton8.Content)
+                || (gameButton.Content == gameButton3.Content && gameButton3.Content == gameButton6.Content)
+                || (gameButton1.Content == gameButton4.Content && gameButton7.Content == gameButton4.Content)
+                || (gameButton2.Content == gameButton5.Content && gameButton5.Content == gameButton8.Content)
+                || (gameButton.Content == gameButton4.Content && gameButton4.Content == gameButton8.Content)
+                || (gameButton2.Content == gameButton4.Content && gameButton4.Content == gameButton6.Content))
+            {
+
             }
         }
 
         private void gameButton_Click(object sender, RoutedEventArgs e)
         {
-
+            XO(gameButton);
         }
 
         private void gameButton1_Click(object sender, RoutedEventArgs e)
         {
+            XO(gameButton1);
+        }
 
+        private void gameButton2_Click(object sender, RoutedEventArgs e)
+        {
+            XO(gameButton2);
+        }
+
+        private void gameButton3_Click(object sender, RoutedEventArgs e)
+        {
+            XO(gameButton3);
+        }
+
+        private void gameButton4_Click(object sender, RoutedEventArgs e)
+        {
+            XO(gameButton4);
+        }
+
+        private void gameButton5_Click(object sender, RoutedEventArgs e)
+        {
+            XO(gameButton5);
+        }
+
+        private void gameButton6_Click(object sender, RoutedEventArgs e)
+        {
+            XO(gameButton6);
+        }
+
+        private void gameButton7_Click(object sender, RoutedEventArgs e)
+        {
+            XO(gameButton7);
+        }
+
+        private void gameButton8_Click(object sender, RoutedEventArgs e)
+        {
+            XO(gameButton8);
         }
     }
 }
