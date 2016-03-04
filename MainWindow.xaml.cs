@@ -21,7 +21,7 @@ namespace TicTacToe
     public partial class MainWindow : Window
     {
         int playerTurn = 0;
-
+        int buttonClick = 0;
         
         public MainWindow()
         {
@@ -59,19 +59,20 @@ namespace TicTacToe
 
         private void XO()
         {
-            if (playerTurn == 0)
+            if (buttonClick == 0)
             {
-                gameButton.Content = "X";
-                playerTurn += 1;
+                if (playerTurn == 0)
+                {
+                    gameButton.Content = "X";
+                    playerTurn += 1;
+                }
+                else
+                {
+                    gameButton.Content = "O";
+                    playerTurn -= 1;
+                }
+                buttonClick += 1;
             }
-            else
-            {
-                gameButton.Content = "O";
-                playerTurn -= 1;
-            }
-
-
-
         }
 
         private void gameButton_Click(object sender, RoutedEventArgs e)
@@ -103,6 +104,7 @@ namespace TicTacToe
 
 //aftereach click check for win
 
-// do not disable buttons
+// do not disable buttons to stop them from changing
+//DONE
 
 //on start dont change names
