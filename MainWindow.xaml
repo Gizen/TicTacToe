@@ -17,10 +17,11 @@
         <Button x:Name="gameButton7" Content="" HorizontalAlignment="Left" Height="40" Margin="200,200,0,0" VerticalAlignment="Top" Width="70" Click="gameButton7_Click"/>
         <Button x:Name="gameButton8" Content="" HorizontalAlignment="Left" Height="40" Margin="300,200,0,0" VerticalAlignment="Top" Width="70" Click="gameButton8_Click"/>
         <Button x:Name="buttonStartGame" Content="Start Game" HorizontalAlignment="Left" Height="31" Margin="165,259,0,0" VerticalAlignment="Top" Width="142" Click="buttonStartGame_Click"/>
-        <TextBox x:Name="textBoxPlayerX" HorizontalAlignment="Left" Height="23" Margin="100,24,0,0" TextWrapping="Wrap" Text="Mark" VerticalAlignment="Top" Width="133"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="17" Margin="10,30,0,0" TextWrapping="Wrap" Text="X Player Name:" VerticalAlignment="Top" Width="133"/>
-        <TextBox x:Name="textBoxPlayerO" HorizontalAlignment="Left" Height="23" Margin="100,61,0,0" TextWrapping="Wrap" Text="other" VerticalAlignment="Top" Width="133"/>
-        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Height="17" Margin="10,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="82" Text="O Player Name:"/>
+        <TextBox x:Name="textBoxPlayerX" HorizontalAlignment="Left" Height="23" Margin="100,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="17" Margin="10,7,0,0" TextWrapping="Wrap" Text="X Player Name:" VerticalAlignment="Top" Width="133"/>
+        <TextBox x:Name="textBoxPlayerO" HorizontalAlignment="Left" Height="23" Margin="100,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Height="17" Margin="10,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="82" Text="O Player Name:"/>
+        <TextBlock x:Name="textBlockPlayerTurn" HorizontalAlignment="Left" Height="19" Margin="143,66,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="200"/>
 
     </Grid>
 </Window>

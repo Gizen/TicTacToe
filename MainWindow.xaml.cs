@@ -21,10 +21,12 @@ namespace TicTacToe
     public partial class MainWindow : Window
     {
         int playerTurn = 0;
-        int buttonClick = 0;
         int gameOver = 0;
         int gameTurns = 0;
-        
+        string playerX;
+        string playerO;
+
+
         public MainWindow()
         {
             InitializeComponent();
@@ -38,6 +40,8 @@ namespace TicTacToe
             gameButton6.IsEnabled = false;
             gameButton7.IsEnabled = false;
             gameButton8.IsEnabled = false;
+
+            textBlockPlayerTurn.Text = "";
 
 
 
@@ -65,86 +69,158 @@ namespace TicTacToe
             gameButton6.Content = "";
             gameButton7.Content = "";
             gameButton8.Content = "";
-            string playerX = textBoxPlayerX.Text;
-            string playerO = textBoxPlayerO.Text;
+
+            gameButton.Content = "";
+            gameButton1.Content = "";
+            gameButton2.Content = "";
+            gameButton3.Content = "";
+            gameButton4.Content = "";
+            gameButton5.Content = "";
+            gameButton6.Content = "";
+            gameButton7.Content = "";
+            gameButton8.Content = "";
+
+            playerX = textBoxPlayerX.Text;
+            playerO = textBoxPlayerO.Text;
+            textBlockPlayerTurn.Text = "";
+            playerTurn = 0;
+            gameOver = 0;
+            gameTurns = 0;
+
+            PlayerTurnText();
         }
 
         private void XO(Button gB)
         {
-            if (gB.Content == "")
+            if (gameOver == 0)
+            {
+                if (gB.Content == "")
+                {
+                    if (playerTurn == 0)
+                    {
+                        gB.Content = "X";
+                        playerTurn += 1;
+                    }
+                    else
+                    {
+                        gB.Content = "O";
+                        playerTurn -= 1;
+                    }
+                }
+                gameTurns++;
+            }
+        }
+        private void CheckAll()
+        {
+            GameWon(gameButton, gameButton1, gameButton2);
+            GameWon(gameButton3, gameButton4, gameButton5);
+            GameWon(gameButton6, gameButton7, gameButton8);
+            GameWon(gameButton, gameButton3, gameButton6);
+            GameWon(gameButton1, gameButton4, gameButton7);
+            GameWon(gameButton2, gameButton5, gameButton8);
+            GameWon(gameButton, gameButton4, gameButton8);
+            GameWon(gameButton2, gameButton4, gameButton6);
+
+            if ((gameOver != 0) && (playerTurn != 0))
+            {
+                textBlockPlayerTurn.Text = playerX + " Won The Game";
+            }
+            else if ((gameOver != 0) && (playerTurn == 0))
+            {
+                textBlockPlayerTurn.Text = playerO + " Won The Game";
+            }
+        }
+
+        private void GameWon(Button btn, Button btn2, Button btn3)
+        {
+            if ((btn.Content != "") && (btn.Content == btn2.Content) && (btn2.Content == btn3.Content))
+            {
+                btn.Background = Brushes.Cyan;
+                btn2.Background = Brushes.Cyan;
+                btn3.Background = Brushes.Cyan;
+                gameOver++;
+            }
+        }
+
+        private void PlayerTurnText()
+        {
+            if (gameOver == 0)
             {
                 if (playerTurn == 0)
                 {
-                    gB.Content = "X";
-                    playerTurn = 1;
+                    textBlockPlayerTurn.Text = playerX + "'s Turn";
                 }
                 else
                 {
-                    gB.Content = "O";
-                    playerTurn -= 1;
-                }                
-            }
-            gameTurns++;
-        }
-
-        private void GameWon()
-        {
-            if ((gameButton.Content == gameButton1.Content && gameButton1.Content == gameButton2.Content)
-                || (gameButton3.Content == gameButton4.Content && gameButton4.Content == gameButton5.Content)
-                || (gameButton6.Content == gameButton7.Content && gameButton7.Content == gameButton8.Content)
-                || (gameButton.Content == gameButton3.Content && gameButton3.Content == gameButton6.Content)
-                || (gameButton1.Content == gameButton4.Content && gameButton7.Content == gameButton4.Content)
-                || (gameButton2.Content == gameButton5.Content && gameButton5.Content == gameButton8.Content)
-                || (gameButton.Content == gameButton4.Content && gameButton4.Content == gameButton8.Content)
-                || (gameButton2.Content == gameButton4.Content && gameButton4.Content == gameButton6.Content))
-            {
-
+                    textBlockPlayerTurn.Text = playerO + "'s Turn";
+                }
             }
         }
+
+
+
 
         private void gameButton_Click(object sender, RoutedEventArgs e)
         {
             XO(gameButton);
+            CheckAll();
+            PlayerTurnText();
         }
 
         private void gameButton1_Click(object sender, RoutedEventArgs e)
         {
             XO(gameButton1);
+            CheckAll();
+            PlayerTurnText();
         }
 
         private void gameButton2_Click(object sender, RoutedEventArgs e)
         {
             XO(gameButton2);
+            CheckAll();
+            PlayerTurnText();
         }
 
         private void gameButton3_Click(object sender, RoutedEventArgs e)
         {
             XO(gameButton3);
+            CheckAll();
+            PlayerTurnText();
         }
 
         private void gameButton4_Click(object sender, RoutedEventArgs e)
         {
             XO(gameButton4);
+            CheckAll();
+            PlayerTurnText();
         }
 
         private void gameButton5_Click(object sender, RoutedEventArgs e)
         {
             XO(gameButton5);
+            CheckAll();
+            PlayerTurnText();
         }
 
         private void gameButton6_Click(object sender, RoutedEventArgs e)
         {
             XO(gameButton6);
+            CheckAll();
+            PlayerTurnText();
         }
 
         private void gameButton7_Click(object sender, RoutedEventArgs e)
         {
             XO(gameButton7);
+            CheckAll();
+            PlayerTurnText();
         }
 
         private void gameButton8_Click(object sender, RoutedEventArgs e)
         {
             XO(gameButton8);
+            CheckAll();
+            PlayerTurnText();
         }
     }
 }
@@ -155,18 +231,24 @@ namespace TicTacToe
 //DONE
 
 //TextBlocks display x or o
+//DONE
 
 //On click display whos turn
+//DONE
 
 //calc winner
+//DONE
 
 //Detecty no winner
 
 //track whos turn
+//DONE
 
 //aftereach click check for win
+//DONE
 
 // do not disable buttons to stop them from changing
 //DONE
 
 //on start dont change names
+//DONE
