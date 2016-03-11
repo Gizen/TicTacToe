@@ -25,6 +25,7 @@ namespace TicTacToe
         int gameTurns = 0;
         string playerX;
         string playerO;
+        int endGame = 0;
 
 
         public MainWindow()
@@ -92,6 +93,7 @@ namespace TicTacToe
             playerTurn = 0;
             gameOver = 0;
             gameTurns = 0;
+            endGame = 0;
 
             //Name Easter Egg
             if (playerO == "Mark")
@@ -108,9 +110,9 @@ namespace TicTacToe
 
         private void XO(Button gB)
         {
-
+            
             //Check if game is over
-            if (gameOver == 0)
+            if (gameOver == 0 && endGame == 0)
             {
 
             //Check to see if there is already a value for the button
@@ -127,6 +129,13 @@ namespace TicTacToe
                     {
                         gB.Content = "O";
                         playerTurn -= 1;
+                    }
+
+            //End game after 9 turns
+                    if (gameTurns == 8)
+                    {
+                        textBlockPlayerTurn.Text = "Game Over No Winner";
+                        endGame = 1;
                     }
                 }
 
@@ -165,6 +174,7 @@ namespace TicTacToe
                 textBlockPlayerTurn.Text = playerO + " Won The Game In " + Convert.ToString(gameOver) + " Ways";
             }
         }
+
         private void GameWon(Button btn, Button btn2, Button btn3)
         {
 
@@ -186,7 +196,7 @@ namespace TicTacToe
         {
 
             //If game isn't over
-            if (gameOver == 0)
+            if (gameOver == 0 && endGame == 0)
             {
 
             //State Correct players turn
