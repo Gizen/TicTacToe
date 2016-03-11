@@ -122,7 +122,7 @@ namespace TicTacToe
             {
 
             //Check to see if there is already a value for the button
-                if (gB.Content == "")
+                if ((string)(gB.Content) == "")
                 {
 
             // Set X and O respectivly
