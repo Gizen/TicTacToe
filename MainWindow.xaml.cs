@@ -26,6 +26,9 @@ namespace TicTacToe
         string playerX;
         string playerO;
         int endGame = 0;
+        int xWins = 0;
+        int yWins = 0;
+
 
 
         public MainWindow()
@@ -44,12 +47,9 @@ namespace TicTacToe
             gameButton8.IsEnabled = false;
 
             textBlockPlayerTurn.Text = "";
-
-
-
-
         }
 
+        //Start button
         private void buttonStartGame_Click(object sender, RoutedEventArgs e)
         {
             //Enable Buttons
@@ -95,6 +95,11 @@ namespace TicTacToe
             gameTurns = 0;
             endGame = 0;
 
+            //Wins impact who goes first
+            if (yWins <= xWins)
+            {
+                playerTurn = 1;
+            }
             //Name Easter Egg
             if (playerO == "Mark")
             {
@@ -108,6 +113,7 @@ namespace TicTacToe
             PlayerTurnText();
         }
 
+        //Methods
         private void XO(Button gB)
         {
             
@@ -143,6 +149,7 @@ namespace TicTacToe
                 gameTurns++;
             }
         }
+
         private void CheckAll()
         {
 
@@ -160,18 +167,22 @@ namespace TicTacToe
             if ((gameOver != 0) && (playerTurn != 0) && (gameOver == 1))
             {
                 textBlockPlayerTurn.Text = playerX + " Won The Game";
+                xWins++;
             }
             else if ((gameOver != 0) && (playerTurn == 0) && (gameOver == 1))
             {
                 textBlockPlayerTurn.Text = playerO + " Won The Game";
+                yWins++;
             }
             else if ((gameOver != 0) && (playerTurn != 0) && (gameOver >= 1))
             {
-                textBlockPlayerTurn.Text = playerX + " Won The Game In " + Convert.ToString(gameOver) + " Ways"; 
+                textBlockPlayerTurn.Text = playerX + " Won The Game In " + Convert.ToString(gameOver) + " Ways";
+                xWins++;
             }
             else if ((gameOver != 0) && (playerTurn == 0) && (gameOver >= 1))
             {
                 textBlockPlayerTurn.Text = playerO + " Won The Game In " + Convert.ToString(gameOver) + " Ways";
+                yWins++;
             }
         }
 
