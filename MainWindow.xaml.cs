@@ -31,6 +31,7 @@ namespace TicTacToe
         {
             InitializeComponent();
 
+            //Disable Buttons
             gameButton.IsEnabled = false;
             gameButton1.IsEnabled = false;
             gameButton2.IsEnabled = false;
@@ -50,6 +51,7 @@ namespace TicTacToe
 
         private void buttonStartGame_Click(object sender, RoutedEventArgs e)
         {
+            //Enable Buttons
             gameButton.IsEnabled = true;
             gameButton1.IsEnabled = true;
             gameButton2.IsEnabled = true;
@@ -60,6 +62,7 @@ namespace TicTacToe
             gameButton7.IsEnabled = true;
             gameButton8.IsEnabled = true;
 
+            //Set Button text to blank
             gameButton.Content = "";
             gameButton1.Content = "";
             gameButton2.Content = "";
@@ -70,32 +73,51 @@ namespace TicTacToe
             gameButton7.Content = "";
             gameButton8.Content = "";
 
-            gameButton.Content = "";
-            gameButton1.Content = "";
-            gameButton2.Content = "";
-            gameButton3.Content = "";
-            gameButton4.Content = "";
-            gameButton5.Content = "";
-            gameButton6.Content = "";
-            gameButton7.Content = "";
-            gameButton8.Content = "";
+            //Set Background button color to white
+            gameButton.Background = Brushes.White;
+            gameButton1.Background = Brushes.White;
+            gameButton2.Background = Brushes.White;
+            gameButton3.Background = Brushes.White;
+            gameButton4.Background = Brushes.White;
+            gameButton5.Background = Brushes.White;
+            gameButton6.Background = Brushes.White;
+            gameButton7.Background = Brushes.White;
+            gameButton8.Background = Brushes.White;
 
+            //Store player names
             playerX = textBoxPlayerX.Text;
             playerO = textBoxPlayerO.Text;
-            textBlockPlayerTurn.Text = "";
+
+            //Set vars to begining values
             playerTurn = 0;
             gameOver = 0;
             gameTurns = 0;
+
+            //Name Easter Egg
+            if (playerO == "Mark")
+            {
+                playerTurn = 1;
+            }
+            else if (playerX == "Mark")
+            {
+                playerTurn = 0;
+            }
 
             PlayerTurnText();
         }
 
         private void XO(Button gB)
         {
+
+            //Check if game is over
             if (gameOver == 0)
             {
+
+            //Check to see if there is already a value for the button
                 if (gB.Content == "")
                 {
+
+            // Set X and O respectivly
                     if (playerTurn == 0)
                     {
                         gB.Content = "X";
@@ -107,11 +129,15 @@ namespace TicTacToe
                         playerTurn -= 1;
                     }
                 }
+
+            //Add one to gameTurns
                 gameTurns++;
             }
         }
         private void CheckAll()
         {
+
+            //Check all the possible win combos
             GameWon(gameButton, gameButton1, gameButton2);
             GameWon(gameButton3, gameButton4, gameButton5);
             GameWon(gameButton6, gameButton7, gameButton8);
@@ -121,31 +147,49 @@ namespace TicTacToe
             GameWon(gameButton, gameButton4, gameButton8);
             GameWon(gameButton2, gameButton4, gameButton6);
 
-            if ((gameOver != 0) && (playerTurn != 0))
+            //display correct win message
+            if ((gameOver != 0) && (playerTurn != 0) && (gameOver == 1))
             {
                 textBlockPlayerTurn.Text = playerX + " Won The Game";
             }
-            else if ((gameOver != 0) && (playerTurn == 0))
+            else if ((gameOver != 0) && (playerTurn == 0) && (gameOver == 1))
             {
                 textBlockPlayerTurn.Text = playerO + " Won The Game";
             }
+            else if ((gameOver != 0) && (playerTurn != 0) && (gameOver >= 1))
+            {
+                textBlockPlayerTurn.Text = playerX + " Won The Game In " + Convert.ToString(gameOver) + " Ways"; 
+            }
+            else if ((gameOver != 0) && (playerTurn == 0) && (gameOver >= 1))
+            {
+                textBlockPlayerTurn.Text = playerO + " Won The Game In " + Convert.ToString(gameOver) + " Ways";
+            }
         }
-
         private void GameWon(Button btn, Button btn2, Button btn3)
         {
-            if ((btn.Content != "") && (btn.Content == btn2.Content) && (btn2.Content == btn3.Content))
+
+            //Check for 3 valid X or O values in a row
+            if (((string)(btn.Content) != "") && (btn.Content == btn2.Content) && (btn2.Content == btn3.Content))
             {
+
+            //If valid win turn them to blue
                 btn.Background = Brushes.Cyan;
                 btn2.Background = Brushes.Cyan;
                 btn3.Background = Brushes.Cyan;
+
+            //Add one to gameOver
                 gameOver++;
             }
         }
 
         private void PlayerTurnText()
         {
+
+            //If game isn't over
             if (gameOver == 0)
             {
+
+            //State Correct players turn
                 if (playerTurn == 0)
                 {
                     textBlockPlayerTurn.Text = playerX + "'s Turn";
@@ -159,7 +203,7 @@ namespace TicTacToe
 
 
 
-
+//All the game buttons
         private void gameButton_Click(object sender, RoutedEventArgs e)
         {
             XO(gameButton);
@@ -224,31 +268,3 @@ namespace TicTacToe
         }
     }
 }
-//Layout Window
-//DONE
-
-//Buttons cant be clicked before game starts
-//DONE
-
-//TextBlocks display x or o
-//DONE
-
-//On click display whos turn
-//DONE
-
-//calc winner
-//DONE
-
-//Detecty no winner
-
-//track whos turn
-//DONE
-
-//aftereach click check for win
-//DONE
-
-// do not disable buttons to stop them from changing
-//DONE
-
-//on start dont change names
-//DONE
