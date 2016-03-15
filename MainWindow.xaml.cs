@@ -117,10 +117,6 @@ namespace TicTacToe
         private void XO(Button gB)
         {
             
-            //Check if game is over
-            if (gameOver == 0 && endGame == 0)
-            {
-
             //Check to see if there is already a value for the button
                 if ((string)(gB.Content) == "")
                 {
@@ -147,8 +143,7 @@ namespace TicTacToe
 
             //Add one to gameTurns
                 gameTurns++;
-            }
-        }
+            }        
 
         private void CheckAll()
         {
@@ -207,8 +202,7 @@ namespace TicTacToe
         {
 
             //If game isn't over
-            if (gameOver == 0 && endGame == 0)
-            {
+           
 
             //State Correct players turn
                 if (playerTurn == 0)
@@ -220,72 +214,98 @@ namespace TicTacToe
                     textBlockPlayerTurn.Text = playerO + "'s Turn";
                 }
             }
-        }
 
 
 
 //All the game buttons
         private void gameButton_Click(object sender, RoutedEventArgs e)
         {
-            XO(gameButton);
-            CheckAll();
-            PlayerTurnText();
+            if (gameOver == 0 && endGame == 0)
+            {
+                XO(gameButton);
+                CheckAll();
+                PlayerTurnText();
+            }
         }
 
         private void gameButton1_Click(object sender, RoutedEventArgs e)
         {
-            XO(gameButton1);
-            CheckAll();
-            PlayerTurnText();
+            if (gameOver == 0 && endGame == 0)
+            {
+                XO(gameButton1);
+                CheckAll();
+                PlayerTurnText();
+            }
         }
 
         private void gameButton2_Click(object sender, RoutedEventArgs e)
         {
-            XO(gameButton2);
-            CheckAll();
-            PlayerTurnText();
+            if (gameOver == 0 && endGame == 0)
+            {
+                XO(gameButton2);
+                CheckAll();
+                PlayerTurnText();
+            }
         }
 
         private void gameButton3_Click(object sender, RoutedEventArgs e)
         {
-            XO(gameButton3);
-            CheckAll();
-            PlayerTurnText();
+            if (gameOver == 0 && endGame == 0)
+            {
+                XO(gameButton3);
+                CheckAll();
+                PlayerTurnText();
+            }
         }
 
         private void gameButton4_Click(object sender, RoutedEventArgs e)
         {
-            XO(gameButton4);
-            CheckAll();
-            PlayerTurnText();
+            if (gameOver == 0 && endGame == 0)
+            {
+                XO(gameButton4);
+                CheckAll();
+                PlayerTurnText();
+            }
         }
 
         private void gameButton5_Click(object sender, RoutedEventArgs e)
         {
-            XO(gameButton5);
-            CheckAll();
-            PlayerTurnText();
+            if (gameOver == 0 && endGame == 0)
+            {
+                XO(gameButton5);
+                CheckAll();
+                PlayerTurnText();
+            }
         }
 
         private void gameButton6_Click(object sender, RoutedEventArgs e)
         {
-            XO(gameButton6);
-            CheckAll();
-            PlayerTurnText();
+            if (gameOver == 0 && endGame == 0)
+            {
+                XO(gameButton6);
+                CheckAll();
+                PlayerTurnText();
+            }
         }
 
         private void gameButton7_Click(object sender, RoutedEventArgs e)
         {
-            XO(gameButton7);
-            CheckAll();
-            PlayerTurnText();
+            if (gameOver == 0 && endGame == 0)
+            {
+                XO(gameButton7);
+                CheckAll();
+                PlayerTurnText();
+            }
         }
 
         private void gameButton8_Click(object sender, RoutedEventArgs e)
         {
-            XO(gameButton8);
-            CheckAll();
-            PlayerTurnText();
+            if (gameOver == 0 && endGame == 0)
+            {
+                XO(gameButton8);
+                CheckAll();
+                PlayerTurnText();
+            }
         }
     }
 }
